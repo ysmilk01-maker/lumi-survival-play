@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#211c32">
-<title>루미 서바이벌 · 시험판 3차</title>
+<title>루미 서바이벌 · 시험판 4차</title>
 <style>
 @font-face{font-family:Jua;src:url('TemplateData/Jua-Regular.ttf')}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#191526;color:#fff6e8;font-family:Jua,'Malgun Gothic',sans-serif;touch-action:none}body{background:radial-gradient(ellipse at 50% 30%,#564266,#191526 70%)}#frame{position:relative;margin:auto;width:min(100vw,56.25vh);height:100%;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);background:#272035;box-shadow:0 0 90px #0f0a1c88}canvas{width:100%;height:100%;display:block;outline:none}#loading,#failure{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:35px;text-align:center;background:radial-gradient(ellipse at 50% 38%,#57415f,#292137 70%)}.eyebrow{font-size:16px;color:#f4d697;letter-spacing:2px}h1{font-size:clamp(30px,6vw,48px);font-weight:400;margin:14px 0 20px}#hero{width:190px;height:210px;object-fit:contain;animation:bob 2.8s ease-in-out infinite}.track{width:85%;height:9px;border-radius:10px;background:#1b1628;margin:30px 0 14px;overflow:hidden}#fill{height:100%;width:0;background:linear-gradient(90deg,#b59adf,#f4d697);transition:width .2s}.message{font-size:18px;line-height:1.6;color:#d0bfdc}.tip{font-size:14px;line-height:1.8;color:#ad9ebc;margin-top:32px}button{font:22px Jua;border:0;border-radius:20px;padding:16px 32px;background:#d9719a;color:#fff6e8;margin-top:22px}#failure{display:none}footer{position:absolute;bottom:20px;color:#b5a6c4;font-size:12px}@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}@media(max-aspect-ratio:3/4){#frame{width:100vw}}@media(prefers-reduced-motion:reduce){#hero{animation:none}}
 </style></head><body>
 <main id="frame"><canvas id="unity-canvas" tabindex="0" aria-label="루미 서바이벌 게임"></canvas>
-<section id="loading" aria-live="polite"><div class="eyebrow">별빛이 부르는 작은 모험</div><h1>루미 서바이벌</h1><img id="hero" src="TemplateData/lumi.png" alt="견습 마법사 루미"><div class="track"><div id="fill"></div></div><div class="message" id="message">마법책을 펴는 중… 0%</div><div class="tip">짝 마법 두 개를 최고 단계로 키우고<br>보물 상자에서 합체 마법을 만나세요.</div><footer>시험판 3차 · 첫 실행은 조금 더 걸릴 수 있어요</footer></section>
+<section id="loading" aria-live="polite"><div class="eyebrow">별빛이 부르는 작은 모험</div><h1>루미 서바이벌</h1><img id="hero" src="TemplateData/lumi.png" alt="견습 마법사 루미"><div class="track"><div id="fill"></div></div><div class="message" id="message">마법책을 펴는 중… 0%</div><div class="tip">짝 마법 두 개를 최고 단계로 키우고<br>보물 상자에서 합체 마법을 만나세요.</div><footer>시험판 4차 · 첫 실행은 조금 더 걸릴 수 있어요</footer></section>
 <section id="failure" role="alert"><h1>잠시 길을 잃었어요</h1><p class="message">게임을 불러오지 못했어요.<br>인터넷 연결을 확인한 뒤 다시 열어 주세요.</p><button onclick="location.reload()">다시 불러오기</button></section></main>
 <script>
-const VERSION='시험판 3차';
+const VERSION='시험판 4차';
 const canvas=document.getElementById('unity-canvas');
 function failed(){document.getElementById('failure').style.display='flex';document.getElementById('loading').style.display='none';}
 const buildUrl='Build';
-const config={dataUrl:buildUrl+'/ee0133ccfdf6e92c11598ff326a5ccd7.data.unityweb',frameworkUrl:buildUrl+'/3ca2ab6b269fe3d57210ab00db9bfc65.framework.js.unityweb',codeUrl:buildUrl+'/540d64c99d8547ccc7835a8adae19d37.wasm.unityweb',streamingAssetsUrl:'StreamingAssets',companyName:'NineToSixLab',productName:'루미 서바이벌',productVersion:'0.3.0',devicePixelRatio:Math.min(window.devicePixelRatio||1,2),showBanner:(message,type)=>{if(type==='error')failed();}};
-const script=document.createElement('script');script.src=buildUrl+'/4324943d16c635a445bc8a92d82f71a4.loader.js';script.onerror=failed;
+const config={dataUrl:buildUrl+'/cd6f4946800cbcefb7a03bff9cb0f0d5.data.unityweb',frameworkUrl:buildUrl+'/3ca2ab6b269fe3d57210ab00db9bfc65.framework.js.unityweb',codeUrl:buildUrl+'/8b8847a64de03529032d7bbc1a15bb59.wasm.unityweb',streamingAssetsUrl:'StreamingAssets',companyName:'NineToSixLab',productName:'루미 서바이벌',productVersion:'0.4.0',devicePixelRatio:Math.max(1,Math.min(window.devicePixelRatio||1,3,Math.sqrt(3600000/Math.max(1,canvas.clientWidth*canvas.clientHeight)))),showBanner:(message,type)=>{if(type==='error')failed();}};
+const script=document.createElement('script');script.src=buildUrl+'/8a8242f4319903ea91472f11d471d462.loader.js';script.onerror=failed;
 script.onload=()=>createUnityInstance(canvas,config,p=>{document.getElementById('fill').style.width=(p*100)+'%';document.getElementById('message').textContent='마법을 준비하는 중… '+Math.round(p*100)+'%';}).then(game=>{window.lumiGame=game;document.getElementById('loading').style.display='none';canvas.focus();}).catch(failed);
 document.body.appendChild(script);canvas.addEventListener('contextmenu',e=>e.preventDefault());canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();failed();});
 </script></body></html>
