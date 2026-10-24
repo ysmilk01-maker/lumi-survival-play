@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>루미 서바이벌 기획 초안</title>
+<style>
+  :root { --bg:#faf7ff; --fg:#2a2238; --mute:#6b6280; --line:#e4dcf2; --card:#fff; --accent:#8a5cd6; --pink:#e8608c; --gold:#c4820a; --green:#2e9e4f; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#17131f; --fg:#efe9fa; --mute:#a99fc0; --line:#352c47; --card:#211b2d; --accent:#b893ff; --pink:#ff8fb0; --gold:#f0b54a; --green:#6fd08f; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.7 "Malgun Gothic", system-ui, sans-serif; }
+  main { max-width:960px; margin:0 auto; padding:28px 16px 64px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  h2 { font-size:19px; margin:36px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--line); }
+  h3 { font-size:16px; margin:20px 0 6px; }
+  .sub { color:var(--mute); margin:0 0 18px; }
+  .box { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:10px 0; }
+  .hero { border-left:5px solid var(--accent); }
+  .warn { border-left:5px solid var(--pink); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; }
+  .grid .box { margin:0; }
+  .k { font-weight:700; }
+  .tag { display:inline-block; font-size:12px; padding:1px 8px; border-radius:99px; background:#8a5cd61f; color:var(--accent); margin-right:4px; }
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; font-size:14px; }
+  th, td { border-bottom:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { color:var(--mute); font-weight:600; font-size:13px; }
+  .wrap { overflow-x:auto; }
+  .tl { display:grid; grid-template-columns:80px 1fr; gap:4px 12px; }
+  .tl b { color:var(--accent); }
+  ul { margin:6px 0; padding-left:20px; }
+  code { font-size:13px; background:#8a5cd61a; padding:1px 5px; border-radius:4px; }
+  .g { color:var(--green); font-weight:700; } .au { color:var(--gold); font-weight:700; } .p { color:var(--pink); font-weight:700; }
+</style>
+</head>
+<body>
+<main>
+<h1>루미 서바이벌 — 기획 초안 v1</h1>
+<p class="sub">2026-10-24 · 루미집 세션 · 가칭 · 「루미의 마법 디펜스」 세계관과 시스템을 이어받는 하이브리드 캐주얼 서바이버라이크</p>
+
+<div class="box hero">
+  <div class="k">한 줄 소개</div>
+  견습 마법사 루미가 몰려오는 몬스터 떼 한가운데서 <b>5분을 버티는</b> 게임. 공격은 저절로 나가고, 플레이어는 <b>움직이기</b>와 <b>레벨업 카드 고르기</b>만 한다. 마법을 모아 <span class="g">상성</span>을 맞추고 <span class="au">합체</span>시켜 화면을 가득 채우는 쾌감이 핵심.
+</div>
+
+<h2>1. 왜 이 게임인가</h2>
+<div class="grid">
+  <div class="box"><div class="k">지금 잘 되는 장르</div>하이브리드 캐주얼이 가장 빠르게 크는 갈래이고, 서바이버라이크는 그 안에서 가장 검증된 형태. 짧게 끝나고 판마다 빌드가 달라 다시 하게 만든다.</div>
+  <div class="box"><div class="k">토스 미니앱에 맞음</div>세로 화면 · 한 손 · 한 판 3~5분. 출퇴근길에 열어 한 판 하고 닫는 흐름과 맞는다.</div>
+  <div class="box"><div class="k">루미 자산 재사용</div>마법 17종 · 상성 · 합체 23종 · 대합체 6종 · 카드 고르기 · 축복 · 연출 · 루미 그림 · 효과음 · 배경음악을 거의 그대로 쓴다. 새로 만들 것은 「움직임」과 「몬스터 떼」.</div>
+  <div class="box"><div class="k">루미 이용자 연결</div>디펜스에서 키운 마법을 서바이벌에서 그대로 알아본다. 두 게임이 서로 광고가 된다(교차 홍보).</div>
+</div>
+
+<h2>2. 핵심 재미 세 가지</h2>
+<div class="grid">
+  <div class="box"><span class="tag">고르기</span><br><b>레벨업 카드 셋 중 하나</b> — 새 마법 · 마법 강화 · 축복. 고르는 순간마다 이번 판의 빌드가 갈린다.</div>
+  <div class="box"><span class="tag">맞추기</span><br><span class="g">상성</span> — 같이 가진 마법끼리 서로 세진다(얼음+번개 = 얼린 적에 번개 2배). 카드에 「지금 가진 ○○와 상성!」 초록 표시.</div>
+  <div class="box"><span class="tag">터뜨리기</span><br><span class="au">합체</span> — 두 마법을 최고 레벨로 키우면 상자에서 합체 마법이 나온다(얼음 번개 폭풍 · 화염 회오리 …). 화면이 확 바뀌는 순간.</div>
+</div>
+
+<h2>3. 한 판의 흐름 (기본 5분)</h2>
+<div class="box tl">
+  <b>0:00</b><span>루미와 첫 마법 1개(판 밖에서 고른 「시작 마법」). 몬스터가 화면 가장자리에서 조금씩 다가온다.</span>
+  <b>0:00~1:00</b><span>몬스터를 잡으면 <b>별사탕</b>이 떨어지고, 주우면 경험치. 레벨업이 빠르다 — 첫 1분에 카드 5~6번(빌드 방향을 빨리 잡게).</span>
+  <b>1:00</b><span><b>정예 웨이브</b> — 단단한 몬스터 무리. 처음 버티면 보물 상자(마법 강화 하나 공짜).</span>
+  <b>2:30</b><span><b>중간 보스</b> — 보스 연출(컷인 · 경고). 잡으면 상자: 합체 조건이 맞으면 여기서 <span class="au">합체</span>.</span>
+  <b>2:30~4:30</b><span>몬스터 수가 크게 늘어난다. 이때가 「화면을 가득 채운 마법」을 보는 구간.</span>
+  <b>5:00</b><span><b>장 보스</b> 등장. 잡으면 판 승리 → 결과 화면(코인 · 별 · 광고 보면 두 배).</span>
+  <b>지면</b><span>체력이 0 이면 → 「광고 보고 이어하기」 한 판 한 번(체력 절반 · 둘레 적 밀어내기).</span>
+</div>
+<p class="sub">루미 디펜스의 「한 판 10분 · 20웨이브」보다 짧게. 토스 안에서 한 번 열었을 때 끝까지 하는 길이.</p>
+
+<h2>4. 조작</h2>
+<div class="box">
+  <ul>
+    <li><b>화면 아무 데나 누르고 끌기</b> = 그 방향으로 루미가 걷는다(떠 있는 조이스틱). 손을 떼면 멈춤. 한 손 · 세로.</li>
+    <li>공격은 전부 자동. 마법마다 「가장 가까운 적」 · 「가장 튼튼한 적」 등 루미 디펜스의 「노릴 적」 규칙을 그대로 따른다.</li>
+    <li>루미 디펜스의 <b>별똥별</b>(누르고 겨누기)과 <b>필살기</b>(가득 차면 별빛 대폭발)를 오른쪽 아래 단추로. 한 판 한 번 · 재사용 대기.</li>
+  </ul>
+</div>
+
+<h2>5. 마법 (첫 출시 12종 + 합체 8종)</h2>
+<p class="sub">루미 디펜스의 마법을 「설치」에서 「루미가 들고 다니는 마법」으로 바꾼다. 이름 · 그림 · 효과음 · 속성은 그대로.</p>
+<div class="wrap">
+<table>
+  <thead><tr><th>마법</th><th>서바이벌에서</th><th>최고 레벨(Lv5) 덤</th></tr></thead>
+  <tbody>
+    <tr><td>불꽃</td><td>가장 가까운 적에게 불덩이 — 맞은 자리 화상</td><td>불덩이 3개</td></tr>
+    <tr><td>얼음 수정</td><td>루미 둘레로 퍼지는 냉기 파동 — 느리게</td><td>잠깐 얼림</td></tr>
+    <tr><td>번개 구름</td><td>머리 위 구름이 사슬 번개</td><td>튀는 횟수 2배</td></tr>
+    <tr><td>독 솥</td><td>지나간 자리에 독 웅덩이</td><td>웅덩이 넓게 · 오래</td></tr>
+    <tr><td>빛 프리즘</td><td>가장 튼튼한 적을 빛줄기로(방패 무시)</td><td>빛줄기 셋</td></tr>
+    <tr><td>바람 풍차</td><td>둘레 적을 밀어내는 돌풍</td><td>돌풍이 회오리로 남음</td></tr>
+    <tr><td>가시 덩굴</td><td>루미 둘레를 도는 가시 고리</td><td>고리 두 겹</td></tr>
+    <tr><td>보물 항아리</td><td>별사탕 줍는 범위 · 양 증가(공격 안 함)</td><td>가끔 황금 별사탕</td></tr>
+    <tr><td>별빛 망원경</td><td>화면 밖 적까지 저격, 치명타 잘 남</td><td>꿰뚫기</td></tr>
+    <tr><td>비눗방울 피리</td><td>적을 거품에 가둬 멈춤, 갇힌 적 더 아픔</td><td>터질 때 둘레 피해</td></tr>
+    <tr><td>땅울림 북</td><td>주기적으로 둘레 땅 위 적 기절</td><td>범위 넓게</td></tr>
+    <tr><td>치유의 꽃</td><td>루미 체력 회복 · 잠깐 보호막(공격 안 함)</td><td>회복할 때 둘레 피해</td></tr>
+  </tbody>
+</table>
+</div>
+<h3>상성 · 합체</h3>
+<div class="box">
+  <ul>
+    <li><span class="g">상성</span>은 디펜스의 「옆 8칸」 대신 <b>「같이 가지고 있으면」</b>. 표는 루미 디펜스 상성표를 그대로 쓰되, 상극(서로 깎음)은 서바이벌에서는 빼서 고르는 부담을 줄인다.</li>
+    <li><span class="au">합체</span>는 두 마법을 <b>둘 다 Lv5</b> 로 만든 뒤 보물 상자(정예 · 보스)를 열면 자동. 첫 출시 8종: 화염 회오리 · 얼음 번개 폭풍 · 독가시 정원 · 유성우 · 번개 거품 · 장미 정원 · 바람 노래 · 황금 프리즘.</li>
+    <li>판 밖 도감에 합체 칸 — 「아직 못 만든 합체」가 다음 판을 하게 만든다.</li>
+  </ul>
+</div>
+
+<h2>6. 몬스터 · 보스 · 장소</h2>
+<div class="box">
+  <ul>
+    <li><b>몬스터</b>: 루미 디펜스 11역할 중 떼로 나오기 좋은 것부터 — 젤리방울(기본) · 깡총 버섯(빠름) · 돌 거북(단단) · 꼬마 박쥐(지형 무시) · 쌍둥이 슬라임(쪼개짐) · 꽃 요정(동료 치료) · 돌진 멧돼지(돌진). 그림 재사용.</li>
+    <li><b>보스</b>: 장소마다 중간 · 장 보스 둘(디펜스 보스 그림 재사용). 서바이벌용 패턴 셋만 새로: 돌진 · 둘레 장판 · 졸개 부르기.</li>
+    <li><b>장소</b>: 마법 숲 → 눈꽃 호수 → 노을 사막 → 달빛 성 → 사탕 마을(첫 출시 5곳). 바닥 그림 · 배경음악 재사용. 장소마다 「어려움」 단계를 열어 오래 하게.</li>
+  </ul>
+</div>
+
+<h2>7. 판 밖 성장 (하이브리드 캐주얼의 핵심)</h2>
+<div class="grid">
+  <div class="box"><div class="k">영구 강화</div>공격력 · 공격 속도 · 체력 · 이동 속도 · 줍는 범위 · 시작 레벨. 코인으로.</div>
+  <div class="box"><div class="k">시작 마법 고르기</div>마법 상점에서 배운 마법 중 하나를 들고 시작. 마법마다 강화 단계.</div>
+  <div class="box"><div class="k">루미 꾸미기</div>옷 · 친구 · 지팡이 — 능력치 조금 + 모습. 디펜스의 옷 · 친구 그림 재사용.</div>
+  <div class="box"><div class="k">매일 할 것</div>출석 7일 · 오늘의 미션 · 오늘의 도전(특별 규칙 판). 디펜스 코드 재사용.</div>
+</div>
+
+<h2>8. 수익</h2>
+<div class="wrap">
+<table>
+  <thead><tr><th>무엇</th><th>어떻게</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td><b>보상형 광고</b></td><td>이어하기(한 판 한 번) · 결과 두 배 · 레벨업 카드 다시 뽑기(판에 한 번) · 하루 보석</td><td>매출의 중심. 강제 광고 없음</td></tr>
+    <tr><td><b>시즌 패스</b></td><td>4주 단위. 무료 줄 + 유료 줄(옷 · 친구 · 코인 · 보석)</td><td>트렌드상 광고+결제+패스 조합이 단일 방식보다 낫다</td></tr>
+    <tr><td><b>꾸미기 · 묶음</b></td><td>첫 구매 꾸러미 · 옷 묶음 · 광고 제거(광고 보상은 바로 받기)</td><td>&nbsp;</td></tr>
+    <tr><td><b>뽑기</b></td><td><b>넣지 않는 쪽을 추천</b></td><td>확률형 아이템 공시 · 사후검증 부담(원스토어 경고 이력)을 피함. 넣는다면 꾸미기만</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>9. 기술 · 그림</h2>
+<div class="grid">
+  <div class="box"><div class="k">엔진</div>유니티 6(6000.6.7f1) 웹GL · 토스 SDK. 루미 디펜스 저장소에서 공용 코드(효과 · 소리 · 저장 · 상점 · 광고 · UI 단추 · 가이드)를 떼어 새 저장소로.</div>
+  <div class="box"><div class="k">가장 큰 위험 = 몬스터 수</div>한 화면 150~300마리. 몬스터 · 탄 · 효과를 모두 「모아 두었다 다시 쓰기」(57차 풀링 방식), 충돌은 격자로 나눠 계산, 그림은 한 장 묶음(아틀라스)으로. 처음부터 마릿수 상한을 설정으로 빼 둔다. 성능은 대표가 직접 잰다.</div>
+  <div class="box"><div class="k">새 그림(코덱스)</div>루미 걷기 4방향(또는 좌우 뒤집기 + 걷기 2장) · 서바이벌용 마법 모양(도는 고리 · 파동 · 웅덩이) 8장 · 보스 패턴 장판 · 상자 · 시즌 패스 화면. 약 30~40장.</div>
+  <div class="box"><div class="k">재사용</div>루미 그림 · 마법 아이콘 · 합체 그림 · 몬스터 · 보스 · 장소 바닥 · 효과 · 효과음 · 배경음악 · 52차 아이콘.</div>
+</div>
+
+<h2>10. 일정 (안)</h2>
+<div class="wrap">
+<table>
+  <thead><tr><th>단계</th><th>내용</th><th>길이(어림)</th></tr></thead>
+  <tbody>
+    <tr><td>1. 손맛 시험판</td><td>마법 숲 하나 · 마법 4종 · 몬스터 3종 · 레벨업 카드 · 5분 판. 「재밌나」만 본다</td><td>1주</td></tr>
+    <tr><td>2. 핵심 완성</td><td>마법 12 · 상성 · 합체 8 · 보스 · 장소 3 · 결과 화면</td><td>2~3주</td></tr>
+    <tr><td>3. 판 밖</td><td>영구 강화 · 시작 마법 · 꾸미기 · 출석 · 미션 · 가이드</td><td>1~2주</td></tr>
+    <tr><td>4. 수익 · 출시</td><td>광고 · 결제 · 시즌 패스 · 토스 등록</td><td>1~2주</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="sub">루미 디펜스처럼 차수로 올리고, 시험 주소에서 대표가 직접 해 보며 다듬는 방식. 어림은 루미 디펜스 1~56차 속도를 기준으로 한 추정.</p>
+
+<h2>11. 위험</h2>
+<div class="box warn">
+  <ul>
+    <li><b>웹GL 성능</b> — 몬스터 떼가 이 장르의 본질이라 줄이면 재미가 빠진다. 1단계에서 저사양 폰 기준 마릿수를 먼저 정한다.</li>
+    <li><b>비슷한 게임이 많음</b> — 차별점은 「루미 상성 · 합체」와 그림책 화풍. 첫 판 2분 안에 합체를 한 번 보여 주는 가이드판이 필요.</li>
+    <li><b>루미 디펜스와 일정 충돌</b> — 디펜스 출시 준비가 회사 PC에서 진행 중. 새 저장소로 나눠 같은 파일을 동시에 고치지 않게.</li>
+  </ul>
+</div>
+
+<h2>12. 대표가 정할 것</h2>
+<div class="box">
+  <ul>
+    <li>게임 이름(가칭 「루미 서바이벌」) · 루미 디펜스와 같은 세계로 갈지</li>
+    <li>한 판 길이: 5분(추천) / 3분 / 10분</li>
+    <li>뽑기를 뺄지(추천) · 시즌 패스를 첫 출시에 넣을지</li>
+    <li>첫 출시 범위: 장소 5곳 · 마법 12 · 합체 8(추천) 또는 더 작게</li>
+    <li>개발할 PC · 세션(새 저장소 이름)</li>
+  </ul>
+</div>
+
+<section id="change-log" hidden>
+  <p>v1 (2026-10-24): 처음 작성 — 대표 「A 초안 만들어봐」(서바이버라이크 · 루미 자산 재사용).</p>
+</section>
+</main>
+</body>
+</html>
